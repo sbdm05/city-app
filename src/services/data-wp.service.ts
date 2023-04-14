@@ -32,7 +32,7 @@ export class DataWpService {
   }
 
   getEventByDate(i: any): Observable<any> {
-    console.log(i, 'depuis service');
+    
     return this.http
       .get<any>(
         `https://localist.fr/wp-json/tribe/events/v1/events/?start_date=${i.search_date}&end-date=${i.search_date}`

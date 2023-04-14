@@ -111,7 +111,6 @@ export class Tab2Page {
 
       // contient le tableau d'objets
       this.updatedDB = datas;
-      console.log(this.updatedDB);
 
       this.dataService.updatedDatas.next(datas);
 
@@ -147,7 +146,6 @@ export class Tab2Page {
           item.isLiked = false;
         }
       });
-      console.log(this.updatedDB);
 
       this.dataService.updatedDatas.next(this.updatedDB);
     } else {
@@ -158,12 +156,11 @@ export class Tab2Page {
       // actualiser le tableau de données
       this.updatedDB.forEach((item: any) => {
         let matchObj = this.updatedDB.find((e: any) => item.id === e.id);
-        console.log(matchObj);
+
         if (matchObj) {
           item.isLiked = true;
         }
       });
-      console.log(this.updatedDB);
 
       this.dataService.updatedDatas.next(this.updatedDB);
     }
@@ -178,12 +175,11 @@ export class Tab2Page {
       i.isChosen = false;
     });
     i.isChosen = true;
-    console.log(i);
     // appel vers service avec recherche par date
     this.dataService.getEventByDate(i).subscribe((events) => {
       events.forEach((item: any) => {
         const matchObj = this.storage.find((e: any) => item.id === e.id);
-        console.log(matchObj);
+
         if (matchObj) {
           item.isLiked = true;
         } else {
@@ -191,7 +187,6 @@ export class Tab2Page {
         }
       });
 
-      console.log(events, 'by date');
       this.isLoaded = true;
       this.filteredEvents = events;
     });
@@ -225,7 +220,6 @@ export class Tab2Page {
   }
 
   onLike(item: any) {
-    console.log(item, 'item cliqué');
     // appel à un service
     // this.localStorage.updatedStorage.next();
     this.onUpdateData(item);
