@@ -11,7 +11,7 @@ export class LocalStorageService {
   ) ;
 
   constructor(private dataService: DataWpService) {
-    console.log('local storage service');
+    // console.log('local storage service');
     if (localStorage.getItem('data')) {
       const arr = JSON.parse(localStorage.getItem('data') ?? '[]')
       this.updatedStorage.next(arr);

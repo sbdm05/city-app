@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { BehaviorSubject, of } from 'rxjs';
 import { DataWpService } from 'src/services/data-wp.service';
 import { LocalStorageService } from 'src/services/local-storage.service';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
@@ -82,7 +81,7 @@ export class Tab2Page {
 
   public isChosen: boolean = false;
 
-  public datas!: any;
+  // public datas!: any;
 
   public filteredEvents!: any;
 
@@ -101,22 +100,18 @@ export class Tab2Page {
     // récupérer la bdd
     this.storage = JSON.parse(localStorage.getItem('data') || '[]');
     this.dataService.getAllEvents().subscribe((datas) => {
-
       // si présent dans localstorage, alors, item.isLiked = true;
-      datas.forEach((item:any)=>{
-
-        const matchObj = this.storage.find((e:any)=> item.id === e.id);
-        console.log(matchObj)
-        if(matchObj){
-          item.isLiked = matchObj.isLiked
+      datas.forEach((item: any) => {
+        const matchObj = this.storage.find((e: any) => item.id === e.id);
+        //  console.log(matchObj);
+        if (matchObj) {
+          item.isLiked = true;
         }
-
-
-
-      })
+      });
 
       // contient le tableau d'objets
       this.updatedDB = datas;
+      console.log(this.updatedDB)
 
       this.dataService.updatedDatas.next(datas);
 
@@ -128,64 +123,106 @@ export class Tab2Page {
     const { obj, status } = item;
     this.storage = JSON.parse(localStorage.getItem('data') || '[]');
     // 1 - On récupère le localStorage pour connaitre les favoris et savoir si item est déjà présent
-    if (this.storage) {
-      // Ici, je cherche si l'item est présent dans le localStorage
-      const alreadyClicked = this.storage.find(
-        (item: any) => item.id === obj.id
+    // if (this.storage) {
+    //   // Ici, je cherche si l'item est présent dans le localStorage
+    //   const alreadyClicked = this.storage.find(
+    //     (item: any) => item.id === obj.id
+    //   );
+
+    //   // Si true, alors on le retire du localStorage
+    //   if (alreadyClicked) {
+    //     alreadyClicked.isLiked = false;
+    //     //Object.assign(obj, alreadyClicked);
+
+    //     // modify the db
+
+    //     this.updatedDB = this.updatedDB.filter(
+    //       (item: any) => item.id !== alreadyClicked.id
+    //     );
+    //     console.log(this.updatedDB);
+
+    //     this.updatedDB.push(alreadyClicked);
+    //     this.dataService.updatedDatas.next(this.updatedDB);
+    //     console.log(this.updatedDB);
+
+    //     // modify the storage
+    //     this.storage = this.storage.filter(
+    //       (item) => item.id !== alreadyClicked.id
+    //     );
+    //     if (this.storage.length > 0) {
+    //       localStorage.setItem('data', JSON.stringify(this.storage));
+    //     } else {
+    //       localStorage.removeItem('data');
+    //     }
+    //   } else {
+    //     obj.isLiked = true;
+    //     //modify the db
+    //     this.updatedDB = this.updatedDB.filter(
+    //       (item: any) => item.id !== obj.id
+    //     );
+    //     console.log(this.updatedDB);
+
+    //     this.updatedDB.push(obj);
+    //     console.log(this.updatedDB);
+    //     this.dataService.updatedDatas.next(this.updatedDB);
+
+    //     // modify the storage
+    //     this.storage = [...this.storage, obj];
+    //     localStorage.setItem('data', JSON.stringify(this.storage));
+    //   }
+    // } else {
+    //   console.log('localstorage absent');
+    //   // si pas de localStorage alors on ajoute l'item
+    //   obj.isLiked = true;
+    //   this.updatedDB = this.updatedDB.filter((item: any) => item.id !== obj.id);
+    //   console.log(this.updatedDB);
+
+    //   this.updatedDB.push(obj);
+    //   console.log(this.updatedDB);
+    //   this.dataService.updatedDatas.next(this.updatedDB);
+    //   localStorage.setItem('data', JSON.stringify([obj]));
+    // }
+
+    // Parcourir le localStorage pour voir si je trouve item
+    const findItem = this.storage.find((el) => el.id === obj.id);
+
+    if (findItem) {
+      // retrouver et retirer du localStorage
+      this.storage = this.storage.filter(
+        (item: any) => item.id !== findItem.id
       );
-
-      // Si true, alors on le retire du localStorage
-      if (alreadyClicked) {
-        alreadyClicked.isLiked = false;
-        //Object.assign(obj, alreadyClicked);
-
-        // modify the db
-
-        this.updatedDB = this.updatedDB.filter(
-          (item: any) => item.id !== alreadyClicked.id
-        );
-        console.log(this.updatedDB);
-
-        this.updatedDB.push(alreadyClicked);
-        this.dataService.updatedDatas.next(this.updatedDB);
-        console.log(this.updatedDB);
-
-        // modify the storage
-        this.storage = this.storage.filter(
-          (item) => item.id !== alreadyClicked.id
-        );
-        if (this.storage.length > 0) {
-          localStorage.setItem('data', JSON.stringify(this.storage));
-        } else {
-          localStorage.removeItem('data');
-        }
-      } else {
-        obj.isLiked = true;
-        //modify the db
-        this.updatedDB = this.updatedDB.filter(
-          (item: any) => item.id !== obj.id
-        );
-        console.log(this.updatedDB);
-
-        this.updatedDB.push(obj);
-        console.log(this.updatedDB);
-        this.dataService.updatedDatas.next(this.updatedDB);
-
-        // modify the storage
-        this.storage = [...this.storage, obj];
+      if (this.storage.length > 0) {
         localStorage.setItem('data', JSON.stringify(this.storage));
+      } else {
+        localStorage.removeItem('data');
       }
-    } else {
-      console.log('localstorage absent');
-      // si pas de localStorage alors on ajoute l'item
-      obj.isLiked = true;
-      this.updatedDB = this.updatedDB.filter((item: any) => item.id !== obj.id);
+
+      // actualiser le tableau de données
+      this.updatedDB.forEach((item: any) => {
+        let matchObj = this.updatedDB.find((e: any) => findItem.id === e.id);
+        //  console.log(matchObj);
+        if (matchObj) {
+          item.isLiked = false;
+        }
+      });
       console.log(this.updatedDB);
 
-      this.updatedDB.push(obj);
-      console.log(this.updatedDB);
       this.dataService.updatedDatas.next(this.updatedDB);
-      localStorage.setItem('data', JSON.stringify([obj]));
+    } else {
+      // ajouter au localStorage
+      this.storage.push(obj);
+      localStorage.setItem('data', JSON.stringify(this.storage));
+      // actualiser le tableau de données
+      this.updatedDB.forEach((item: any) => {
+        let matchObj = this.updatedDB.find((e: any) => item.id === e.id);
+        console.log(matchObj);
+        if (matchObj) {
+          item.isLiked = true;
+        }
+      });
+      console.log(this.updatedDB);
+
+      this.dataService.updatedDatas.next(this.updatedDB);
     }
   }
 
@@ -201,6 +238,14 @@ export class Tab2Page {
     console.log(i);
     // appel vers service avec recherche par date
     this.dataService.getEventByDate(i).subscribe((events) => {
+      events.forEach((item: any) => {
+        const matchObj = this.storage.find((e: any) => item.id === e.id);
+        console.log(matchObj);
+        if (matchObj) {
+          item.isLiked = matchObj.isLiked;
+        }
+      });
+
       console.log(events, 'by date');
       this.isLoaded = true;
       this.filteredEvents = events;
@@ -219,6 +264,13 @@ export class Tab2Page {
     console.log(i);
     // appel vers service avec recherche par date
     this.dataService.getEventByDate(i).subscribe((events) => {
+      events.forEach((item: any) => {
+        const matchObj = this.storage.find((e: any) => item.id === e.id);
+        console.log(matchObj);
+        if (matchObj) {
+          item.isLiked = matchObj.isLiked;
+        }
+      });
       console.log(events, 'by date');
       this.isLoaded = true;
       this.filteredEvents = events;

@@ -18,7 +18,7 @@ export class LikeIconPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.item.isLiked);
+    // console.log(this.item.isLiked);
 
     if (this.item.isLiked === true) {
       this.iconName = 'heart';
