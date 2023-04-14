@@ -136,6 +136,7 @@ export class Tab2Page {
         this.localStorageService.updatedStorage.next(this.storage);
       } else {
         localStorage.removeItem('data');
+        this.localStorageService.updatedStorage.next([]);
       }
 
       // actualiser le tableau de données
