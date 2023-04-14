@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Agenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <!-- itération dans les dates -->
+  <ion-row class='ion-chip-container'>
+
+      <ion-item>Juillet</ion-item>
+      <ion-chip *ngFor='let i of dates_july' class='ion-chip-item' (click)='onSearchByDateJuly(i)' [ngClass]="{'chosen': i.isChosen}">{{i.day_literal}}</ion-chip>
+
+    <!-- <ion-item>Août</ion-item>
+    <ion-chip *ngFor='let i of dates_august' class='ion-chip-item'>{{i.day_literal}}</ion-chip> -->
+  </ion-row>
+
+    <ion-row class='ion-chip-container'>
+
+      <ion-item>Août</ion-item>
+      <ion-chip
+      *ngFor='let i of dates_august'
+      class='ion-chip-item'
+      [ngClass]="{'chosen': i.isChosen}"
+      (click)='onSearchByDateAugust(i)'>{{i.day_literal}}</ion-chip>
+
+      <!-- <ion-item>Août</ion-item>
+        <ion-chip *ngFor='let i of dates_august' class='ion-chip-item'>{{i.day_literal}}</ion-chip> -->
+    </ion-row>
+
+
+    <ng-container *ngIf='!isLoaded'>
+        <app-explore-container></app-explore-container>
+    </ng-container>
+
+    <ng-container *ngIf='updatedTab$ | async as datas'>
+          <ng-container *ngIf='!filteredEvents && isLoaded'>
+          <ion-card *ngFor='let i of datas'>
+          <ion-card-header>
+            <ion-card-title>{{i.title}}</ion-card-title>
+            <div class="sub-content">
+              <ion-card-subtitle *ngFor='let cat of i.categories'>{{cat.name}}</ion-card-subtitle>
+              <app-like-icon [item]="i" (submitted)='onLike($event)'></app-like-icon>
+            </div>
+
+          </ion-card-header>
+
+      <ion-card-content>
+      Début : {{i.start_date_details.hour}}h{{i.start_date_details.minutes}}
+      Début : {{i.end_date_details.hour}}h{{i.end_date_details.minutes}}
+      <div [innerHtml]="i.description"></div>
+
+      </ion-card-content>
+          </ion-card>
+      </ng-container>
+    </ng-container>
+
+
+
+
+    <ng-container *ngIf='filteredEvents && isLoaded'>
+      <ion-card *ngFor='let i of filteredEvents'  >
+        <ion-card-header>
+          <ion-card-title>{{i.title}}</ion-card-title>
+                <div class="sub-content">
+                  <ion-card-subtitle *ngFor='let cat of i.categories'>{{cat.name}}</ion-card-subtitle>
+                  <app-like-icon [item]="i" (submitted)='onLike($event)'></app-like-icon>
+                </div>
+
+        </ion-card-header>
+
+        <ion-card-content>
+          Début : {{i.start_date_details.hour}}h{{i.start_date_details.minutes}}
+          Début : {{i.end_date_details.hour}}h{{i.end_date_details.minutes}}
+          <div [innerHtml]="i.description"></div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+
+
+</ion-content>

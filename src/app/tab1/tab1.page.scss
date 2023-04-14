@@ -1,0 +1,79 @@
+a{
+  color: white;
+  text-decoration: none;
+}
+ion-header{
+  background-color: #a10d59;
+  color: white;
+}
+ion-content {
+  font-family: Jost;
+}
+ion-title{
+  font-family: Jost;
+  background-color: #a10d59;
+  color: white;
+}
+.logo{
+    position: fixed;
+      top: 0;
+      height: 87px;
+      left: 20px;
+      z-index: 998;
+      background: #a10d59;
+      padding: 1rem;
+}
+.content{
+    display: flex;
+    height: 29vh;
+}
+.content-grid .item-grid{
+  background-color: #009ee0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+    align-items: center;
+    padding-left: 6rem;
+      font-style: italic;
+
+}
+.content-grid{
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  height: 86vh;
+  align-items: center;
+  justify-items: center;
+  grid-row-gap: 7px;
+  margin: 7px;
+}
+.main-container{
+height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.icon{
+  color: white;
+  padding-right: 0.6rem;
+}
+.icon-text{
+  position: relative;
+  color: black;
+}
+.icon-text::before{
+  position: absolute;
+  top: -24px;
+  left: 34px;
+  height: 79px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  content: "";
+}
+/*
+color
+--color-1--5: #a10d59;// violet
+--color-2--1: #97bf0d; // vert
+background-color: #efefef
+--color-1--3: #009ee0; // bleu
+*/

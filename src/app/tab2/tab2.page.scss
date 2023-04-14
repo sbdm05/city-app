@@ -1,0 +1,39 @@
+ion-header {
+  background-color: #a10d59;
+  color: white;
+}
+
+ion-content {
+  font-family: Jost;
+}
+
+ion-title {
+  font-family: Jost;
+  background-color: #a10d59;
+  color: white;
+}
+.ion-chip-container{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 1rem;
+}
+.ion-chip-container::-webkit-scrollbar {
+  width: 0;
+}
+.ion-chip-item{
+  flex: 1 0 40px;
+  display: flex;
+  justify-content: center;
+}
+.chosen{
+  color: red;
+}
+.sub-content{
+  display: flex;
+justify-content: space-between;
+}
+.icon{
+  font-size: 1.1rem;
+}
+
