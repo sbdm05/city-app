@@ -111,7 +111,7 @@ export class Tab2Page {
 
       // contient le tableau d'objets
       this.updatedDB = datas;
-      console.log(this.updatedDB)
+      console.log(this.updatedDB);
 
       this.dataService.updatedDatas.next(datas);
 
@@ -133,6 +133,7 @@ export class Tab2Page {
       );
       if (this.storage.length > 0) {
         localStorage.setItem('data', JSON.stringify(this.storage));
+        this.localStorageService.updatedStorage.next(this.storage);
       } else {
         localStorage.removeItem('data');
       }
@@ -152,6 +153,7 @@ export class Tab2Page {
       // ajouter au localStorage
       this.storage.push(obj);
       localStorage.setItem('data', JSON.stringify(this.storage));
+      this.localStorageService.updatedStorage.next(this.storage);
       // actualiser le tableau de données
       this.updatedDB.forEach((item: any) => {
         let matchObj = this.updatedDB.find((e: any) => item.id === e.id);
@@ -183,7 +185,7 @@ export class Tab2Page {
         console.log(matchObj);
         if (matchObj) {
           item.isLiked = true;
-        }else{
+        } else {
           item.isLiked = false;
         }
       });
