@@ -122,66 +122,6 @@ export class Tab2Page {
   onUpdateData(item: any) {
     const { obj, status } = item;
     this.storage = JSON.parse(localStorage.getItem('data') || '[]');
-    // 1 - On récupère le localStorage pour connaitre les favoris et savoir si item est déjà présent
-    // if (this.storage) {
-    //   // Ici, je cherche si l'item est présent dans le localStorage
-    //   const alreadyClicked = this.storage.find(
-    //     (item: any) => item.id === obj.id
-    //   );
-
-    //   // Si true, alors on le retire du localStorage
-    //   if (alreadyClicked) {
-    //     alreadyClicked.isLiked = false;
-    //     //Object.assign(obj, alreadyClicked);
-
-    //     // modify the db
-
-    //     this.updatedDB = this.updatedDB.filter(
-    //       (item: any) => item.id !== alreadyClicked.id
-    //     );
-    //     console.log(this.updatedDB);
-
-    //     this.updatedDB.push(alreadyClicked);
-    //     this.dataService.updatedDatas.next(this.updatedDB);
-    //     console.log(this.updatedDB);
-
-    //     // modify the storage
-    //     this.storage = this.storage.filter(
-    //       (item) => item.id !== alreadyClicked.id
-    //     );
-    //     if (this.storage.length > 0) {
-    //       localStorage.setItem('data', JSON.stringify(this.storage));
-    //     } else {
-    //       localStorage.removeItem('data');
-    //     }
-    //   } else {
-    //     obj.isLiked = true;
-    //     //modify the db
-    //     this.updatedDB = this.updatedDB.filter(
-    //       (item: any) => item.id !== obj.id
-    //     );
-    //     console.log(this.updatedDB);
-
-    //     this.updatedDB.push(obj);
-    //     console.log(this.updatedDB);
-    //     this.dataService.updatedDatas.next(this.updatedDB);
-
-    //     // modify the storage
-    //     this.storage = [...this.storage, obj];
-    //     localStorage.setItem('data', JSON.stringify(this.storage));
-    //   }
-    // } else {
-    //   console.log('localstorage absent');
-    //   // si pas de localStorage alors on ajoute l'item
-    //   obj.isLiked = true;
-    //   this.updatedDB = this.updatedDB.filter((item: any) => item.id !== obj.id);
-    //   console.log(this.updatedDB);
-
-    //   this.updatedDB.push(obj);
-    //   console.log(this.updatedDB);
-    //   this.dataService.updatedDatas.next(this.updatedDB);
-    //   localStorage.setItem('data', JSON.stringify([obj]));
-    // }
 
     // Parcourir le localStorage pour voir si je trouve item
     const findItem = this.storage.find((el) => el.id === obj.id);
@@ -242,7 +182,9 @@ export class Tab2Page {
         const matchObj = this.storage.find((e: any) => item.id === e.id);
         console.log(matchObj);
         if (matchObj) {
-          item.isLiked = matchObj.isLiked;
+          item.isLiked = true;
+        }else{
+          item.isLiked = false;
         }
       });
 
@@ -268,7 +210,9 @@ export class Tab2Page {
         const matchObj = this.storage.find((e: any) => item.id === e.id);
         console.log(matchObj);
         if (matchObj) {
-          item.isLiked = matchObj.isLiked;
+          item.isLiked = true;
+        } else {
+          item.isLiked = false;
         }
       });
       console.log(events, 'by date');
