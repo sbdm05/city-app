@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Component, EnvironmentInjector, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
@@ -9,7 +10,6 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class TabsPage {
-  public environmentInjector = inject(EnvironmentInjector);
 
   constructor() {}
 }

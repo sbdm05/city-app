@@ -7,7 +7,9 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { newsInterceptor } from './interceptors/news.interceptor';
+
 
 if (environment.production) {
   enableProdMode();
@@ -18,6 +20,6 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicModule.forRoot({})),
     provideRouter(routes),
-    provideHttpClient()
+    provideHttpClient(withInterceptors([newsInterceptor])),
   ],
 });
