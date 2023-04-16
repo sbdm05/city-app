@@ -40,6 +40,12 @@ export const routes: Routes = [
             (m) => m.TabListeByCategoryPage
           ),
       },
+
+      {
+        path: 'tab-faq',
+        loadComponent: () =>
+          import('../tab-faq/tab-faq.page').then((m) => m.TabFaqPage),
+      },
       {
         path: '',
         redirectTo: '/tabs/tab1',

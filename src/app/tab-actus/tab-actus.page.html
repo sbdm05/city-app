@@ -18,7 +18,7 @@
     <ion-card-content [innerHtml]="post.excerpt.rendered">
     </ion-card-content>
 
-    <ion-button size="small" (click)="setOpen(true)">+</ion-button>
+    <ion-button class="ion-padding-start"  size="small" (click)="setOpen(true)">Lire plus</ion-button>
 
     <ion-modal [isOpen]="isModalOpen">
       <ng-template>
@@ -32,7 +32,7 @@
         </ion-header>
         <ion-content class="ion-padding" [innerHtml]="post.content.rendered">
         </ion-content>
-        
+
       </ng-template>
     </ion-modal>
 
