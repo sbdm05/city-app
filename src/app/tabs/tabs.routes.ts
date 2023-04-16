@@ -27,6 +27,20 @@ export const routes: Routes = [
           import('../tab-actus/tab-actus.page').then((m) => m.TabActusPage),
       },
       {
+        path: 'tab-annuaire',
+        loadComponent: () =>
+          import('../tab-annuaire/tab-annuaire.page').then(
+            (m) => m.TabAnnuairePage
+          ),
+      },
+      {
+        path: 'tab-liste-by-category/:cat',
+        loadComponent: () =>
+          import('../tab-liste-by-category/tab-liste-by-category.page').then(
+            (m) => m.TabListeByCategoryPage
+          ),
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',

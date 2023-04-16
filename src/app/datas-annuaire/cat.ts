@@ -1,0 +1,6 @@
+export enum catEnum {
+  RESTAURANT =  "RESTAURANT",
+  BIENETRE = "BIEN-ETRE",
+  HEBERGEMENT = "HEBERGEMENT",
+  MAGASIN = "MAGASIN"
+}
