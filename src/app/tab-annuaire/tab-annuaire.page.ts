@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { datasAnnuaire } from '../datas-annuaire/datas';
 import { catEnum } from '../datas-annuaire/cat';
 import { Router } from '@angular/router';
+import { MockIconPage } from '../icons/components/mock-icon/mock-icon.page';
+
 
 @Component({
   selector: 'app-tab-annuaire',
   templateUrl: './tab-annuaire.page.html',
   styleUrls: ['./tab-annuaire.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, MockIconPage]
 })
 export class TabAnnuairePage implements OnInit {
 

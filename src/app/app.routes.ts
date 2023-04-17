@@ -4,11 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
-  },
-  {
-    path: 'like-icon',
-    loadComponent: () => import('./icons/components/like-icon/like-icon.page').then( m => m.LikeIconPage)
-  },
+  }
   // {
   //   path: 'tab-actus',
   //   loadComponent: () => import('./tab-actus/tab-actus.page').then( m => m.TabActusPage)
