@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { NewsApiService } from 'src/services/news-api.service';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NewsApiEnService } from 'src/services/news-api-en.service';
 
 @Component({
   selector: 'app-tab-actus',
@@ -21,24 +22,47 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   imports: [IonicModule, CommonModule, FormsModule, RouterModule, TranslateModule],
 })
 export class TabActusPage implements OnInit {
-  public posts$: Observable<any> = this.newsApiService.collection;
+  public posts$!: Observable<any>;
   isModalOpen = false;
 
-  constructor(private newsService: NewsService, private newsApiService : NewsApiService, public translate : TranslateService) {
+  constructor(
+    private newsService: NewsService,
+    private newsApiService : NewsApiService,
+    public translate : TranslateService,
+    private newsApiEnService : NewsApiEnService
+    ) {
      if (localStorage.getItem('lang')) {
        console.log(localStorage.getItem('lang'));
        const lang = localStorage.getItem('lang');
        if (lang == 'fr') {
          console.log('en francais');
          translate.use('fr');
+         this.posts$ = this.newsApiService.collection;
        } else {
          console.log('en');
          translate.use('en');
+         this.posts$ = this.newsApiEnService.collection;
        }
      }
   }
 
   ngOnInit() {}
+
+  ionViewWillEnter(){
+     if (localStorage.getItem('lang')) {
+       console.log(localStorage.getItem('lang'));
+       const lang = localStorage.getItem('lang');
+       if (lang == 'fr') {
+         console.log('en francais');
+         this.translate.use('fr');
+         this.posts$ = this.newsApiService.collection;
+       } else {
+         console.log('en');
+         this.translate.use('en');
+         this.posts$ = this.newsApiEnService.collection;
+       }
+     }
+  }
 
   ngOnChanges() {
     console.log('from on changes');
