@@ -17,7 +17,7 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   ],
 })
 export class Tab1Page {
-  public titleTab1!: string ;
+  // public titleTab1!: string ;
 
   constructor(
     public translate: TranslateService,

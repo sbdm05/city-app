@@ -1,4 +1,7 @@
 {
-  "annuaire": "directory",
-  "titleTab1": "Olympic Games 2024"
+  "annuaire": "Directory",
+  "titleTab1": "Olympic Games 2024",
+  "agenda": "Schedule",
+  "news": "News",
+  "faq": "Frequently Asked Questions"
 }
