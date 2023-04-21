@@ -23,6 +23,8 @@ export class MockIconPage implements OnInit {
       this.iconName = 'rose';
     } else if (this.iconName === 'MAGASIN') {
       this.iconName = 'basket';
+    }else if (this.iconName === 'RESTAURANT') {
+      this.iconName = 'basket';
     }
   }
 

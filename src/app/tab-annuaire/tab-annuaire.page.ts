@@ -6,6 +6,7 @@ import { datasAnnuaire } from '../datas-annuaire/datas';
 import { catEnum } from '../datas-annuaire/cat';
 import { Router } from '@angular/router';
 import { MockIconPage } from '../icons/components/mock-icon/mock-icon.page';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -13,22 +14,37 @@ import { MockIconPage } from '../icons/components/mock-icon/mock-icon.page';
   templateUrl: './tab-annuaire.page.html',
   styleUrls: ['./tab-annuaire.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, MockIconPage]
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    MockIconPage,
+    TranslateModule,
+  ],
 })
 export class TabAnnuairePage implements OnInit {
-
   public catEnum = catEnum;
 
-  constructor(private router : Router) { }
-
-  ngOnInit() {
+  constructor(private router: Router, public translate: TranslateService) {
+     if (localStorage.getItem('lang')) {
+       console.log(localStorage.getItem('lang'));
+       const lang = localStorage.getItem('lang');
+       if (lang == 'fr') {
+         console.log('en francais');
+         translate.use('fr');
+       } else {
+         console.log('en');
+         translate.use('en');
+       }
+     }
   }
 
-  public onSelect(cat: any){
+  ngOnInit() {}
+
+  public onSelect(cat: any) {
     console.log(cat);
-    const catLowerCase = cat.toLowerCase()
+    const catLowerCase = cat.toLowerCase();
     // redirect avec param cat
-    this.router.navigate(['tabs', 'tab-liste-by-category', catLowerCase]);
+    this.router.navigate(['content', 'tabs', 'tab-liste-by-category', catLowerCase]);
   }
-
 }

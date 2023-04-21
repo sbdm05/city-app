@@ -1,36 +1,57 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Annuaire
+      {{'titleTabAnnuaire' | translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tab-annuaire</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
+
 
 
   <ion-card>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor='let cat of catEnum | keyvalue' >
-          <span (click)='onSelect(cat.value)' class="ion-align-items-center">
+        <ion-item >
+          <span (click)="onSelect('bien-etre')" class="ion-align-items-center">
             <ion-thumbnail slot="start" >
-               <!-- utiliser un composant icons personnalisable -->
-              <app-mock-icon class="ion-align-self-center"  [iconName]='cat.value'></app-mock-icon>
+              <app-mock-icon class="ion-align-self-center"  iconName="BIEN-ETRE"></app-mock-icon>
             </ion-thumbnail>
-            <ion-label >{{cat.value }}</ion-label>
+            <ion-label >{{"bienetre" | translate}}</ion-label>
+          </span>
+        </ion-item>
+        <ion-item>
+          <span (click)="onSelect('hebergement')" class="ion-align-items-center">
+            <ion-thumbnail slot="start">
+              <!-- utiliser un composant icons personnalisable -->
+              <app-mock-icon class="ion-align-self-center" iconName='HEBERGEMENT'></app-mock-icon>
+            </ion-thumbnail>
+            <ion-label>{{"hebergement" | translate}}</ion-label>
 
           </span>
-
-
-
-
         </ion-item>
+        <ion-item >
+          <span (click)="onSelect('magasin')" class="ion-align-items-center">
+            <ion-thumbnail slot="start">
+              <!-- utiliser un composant icons personnalisable -->
+              <app-mock-icon class="ion-align-self-center" iconName='MAGASIN'></app-mock-icon>
+            </ion-thumbnail>
+            <ion-label>{{"magasin" | translate}}</ion-label>
+
+          </span>
+        </ion-item>
+        <ion-item >
+          <span (click)="onSelect('restaurant')" class="ion-align-items-center">
+            <ion-thumbnail slot="start">
+              <!-- utiliser un composant icons personnalisable -->
+              <app-mock-icon class="ion-align-self-center" iconName='RESTAURANT'></app-mock-icon>
+            </ion-thumbnail>
+            <ion-label>{{"restaurant" | translate}}</ion-label>
+
+          </span>
+        </ion-item>
+
 
       </ion-list>
     </ion-card-content>

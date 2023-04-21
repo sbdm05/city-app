@@ -1,7 +1,12 @@
 {
   "annuaire": "Directory",
   "titleTab1": "Olympic Games 2024",
+  "titleTabAnnuaire": "Directory",
   "agenda": "Schedule",
   "news": "News",
-  "faq": "Frequently Asked Questions"
+  "faq": "Frequently Asked Questions",
+  "bienetre": "WELL-BEING",
+  "hebergement": "ACCOMODATIONS",
+  "magasin": "SHOPS",
+  "restaurant": "RESTAURANTS"
 }

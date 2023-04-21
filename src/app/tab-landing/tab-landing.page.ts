@@ -11,19 +11,28 @@ import { Router } from '@angular/router';
   templateUrl: './tab-landing.page.html',
   styleUrls: ['./tab-landing.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ExploreContainerComponent, TranslateModule],
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    ExploreContainerComponent,
+    TranslateModule,
+  ],
 })
 export class TabLandingPage implements OnInit {
   public annuaire: string = 'annuaire';
-  constructor(public translate: TranslateService, public router : Router) {
+  constructor(public translate: TranslateService, public router: Router) {
     translate.addLangs(['en', 'fr']);
     translate.setDefaultLang('fr');
   }
 
   switchLang(lang: string) {
-    console.log(lang)
+    console.log(lang);
     this.translate.use(lang);
-    this.router.navigate(['content', 'tabs', 'tab1', lang])
+    // sauvegarder dans localstorage
+    localStorage.setItem('lang', lang);
+    
+    this.router.navigate(['content', 'tabs', 'tab1']);
   }
 
   ngOnInit() {}

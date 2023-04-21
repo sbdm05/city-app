@@ -1,7 +1,12 @@
 {
   "annuaire": "Annuaire",
-  "titleTab1" : "Ma Ville - JO 2024",
+  "titleTab1": "Ma Ville - JO 2024",
+  "titleTabAnnuaire": "Annuaire",
   "agenda": "Agenda",
-  "news" : "A la Une",
-  "faq" : "Questions - Réponses"
+  "news": "A la Une",
+  "faq": "Questions - Réponses",
+  "bienetre": "BIEN-ETRE",
+  "hebergement": "HEBERGEMENT",
+  "magasin": "MAGASIN",
+  "restaurant": "RESTAURANT"
 }

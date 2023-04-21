@@ -20,26 +20,35 @@ export class Tab1Page {
   // public titleTab1!: string ;
 
   constructor(
-    public translate: TranslateService,
-    private activatedRoute: ActivatedRoute
+    public translate: TranslateService
   ) {
-    this.activatedRoute.params.subscribe(
-      (params: Params) => {
-      console.log(params['lang']);
-      // condition
-      if (params['lang'] == 'fr') {
+    // this.activatedRoute.params.subscribe(
+    //   (params: Params) => {
+    //   console.log(params['lang']);
+    //   // condition
+    //   if (params['lang'] == 'fr') {
+    //     console.log('en francais');
+    //     translate.use('fr');
+    //   } else {
+    //     console.log('en');
+    //     translate.use('en');
+    //   }
+    //   },
+    // );
+
+    // extraire localStorage
+    if (localStorage.getItem('lang')) {
+      console.log(localStorage.getItem('lang'));
+      const lang = localStorage.getItem('lang');
+      if (lang == 'fr') {
         console.log('en francais');
         translate.use('fr');
       } else {
         console.log('en');
         translate.use('en');
       }
-      },
-    );
+    }
   }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 }
