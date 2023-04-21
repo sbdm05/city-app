@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Questions Fréquentes</ion-title>
+    <ion-title>{{ 'faq' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class='ion-padding'>
+<ion-content [fullscreen]="true" class='ion-padding' *ngIf="lang === 'fr'">
   <ion-accordion-group>
     <ion-accordion value="first" class='ion-padding'>
       <ion-item slot="header" color="light">
@@ -33,6 +33,44 @@
         au 5 août, les tireurs seront accueillis sur place du 22 juillet au 8 août. Les épreuves des Jeux paralympiques auront,
         quant à elles, lieu du 28 août au 5 septembre, mais les paratireurs seront présents du 23 août au 10 septembre. En tout,
         l’accueil de toutes ces délégations représente donc un défi d’un mois et demi pour l’agglomération castelroussine.
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
+
+<ion-content [fullscreen]="true" class='ion-padding' *ngIf="lang === 'en'">
+  <ion-accordion-group>
+    <ion-accordion value="first" class='ion-padding'>
+      <ion-item slot="header" color="light">
+        <ion-label style='white-space: inherit;'>When are the Paris 2024 Olympic and Paralympic Games?</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        Given that there will be very strong interest, a draw is the fairest way of giving everyone an equal chance of trying to
+        obtain a ticket. The people selected in the draw will be given access to a purchase window that will be open for a
+        certain number of hours.
+
+        They can buy tickets during that window, subject to availability, and up to a maximum limit that will be specified at a
+        later date.
+
+      </div>
+    </ion-accordion>
+    <ion-accordion value="second" class='ion-padding'>
+      <ion-item slot="header" color="light">
+        <ion-label style='white-space: inherit;'>When can I buy tickets for the Paris 2024 Paralympic Games?</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        Tickets to the Paris 2024 Paralympic Games will go on sale in autumn 2023.
+        Various options will be available: single ticket sales, day passes to discover several different Paralympic sports, and
+        more.
+      </div>
+    </ion-accordion>
+    <ion-accordion value="third" class='ion-padding'>
+      <ion-item slot="header" color="light">
+        <ion-label style='white-space: inherit;'>I live abroad, how to plan my stay for the Paris 2024 Games?</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        Paris 2024 and On Location, the Official Hospitality Provider for the Paris 2024 Games, have created a new and unique
+        way to experience the Games.
       </div>
     </ion-accordion>
   </ion-accordion-group>

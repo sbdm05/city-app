@@ -32,7 +32,9 @@
 
 
     <ng-container *ngIf='!isLoaded'>
-        <app-explore-container></app-explore-container>
+        <app-explore-container>
+           <ion-spinner name="bubbles"></ion-spinner>
+        </app-explore-container>
     </ng-container>
 
     <ng-container *ngIf='updatedTab$ | async as datas'>
