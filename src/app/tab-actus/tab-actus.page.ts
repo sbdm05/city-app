@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NewsService } from 'src/services/news.service';
@@ -9,19 +9,21 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NewsApiService } from 'src/services/news-api.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tab-actus',
   templateUrl: './tab-actus.page.html',
   styleUrls: ['./tab-actus.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule],
 })
 export class TabActusPage implements OnInit {
-  public posts$: Observable<any> = this.newsService.collection;
+  public posts$: Observable<any> = this.newsApiService.collection;
   isModalOpen = false;
 
-  constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService, private newsApiService : NewsApiService) {}
 
   ngOnInit() {}
 
@@ -35,6 +37,6 @@ export class TabActusPage implements OnInit {
 
   ionViewDidLeave() {
     console.log('test');
-    this.newsService.refreshCollection();
+    this.newsApiService.refreshCollection();
   }
 }
