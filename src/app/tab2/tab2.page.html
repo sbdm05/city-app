@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Agenda</ion-title>
+    <ion-title>{{ 'agenda' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +10,7 @@
   <!-- itération dans les dates -->
   <ion-row class='ion-chip-container'>
 
-      <ion-item>Juillet</ion-item>
+      <ion-item>{{ 'juillet' | translate}}</ion-item>
       <ion-chip *ngFor='let i of dates_july' class='ion-chip-item' (click)='onSearchByDateJuly(i)' [ngClass]="{'chosen': i.isChosen}">{{i.day_literal}}</ion-chip>
 
     <!-- <ion-item>Août</ion-item>
@@ -19,7 +19,7 @@
 
     <ion-row class='ion-chip-container'>
 
-      <ion-item>Août</ion-item>
+      <ion-item>{{ 'aout' | translate}}</ion-item>
       <ion-chip
       *ngFor='let i of dates_august'
       class='ion-chip-item'

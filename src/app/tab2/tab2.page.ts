@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DataWpService } from 'src/services/data-wp.service';
 import { LocalStorageService } from 'src/services/local-storage.service';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
@@ -11,7 +12,7 @@ import { IconsModule } from '../icons/icons.module';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [IonicModule, ExploreContainerComponent, CommonModule, IconsModule],
+  imports: [IonicModule, ExploreContainerComponent, CommonModule, IconsModule, TranslateModule],
 })
 export class Tab2Page {
   public dates_july = [
@@ -95,7 +96,8 @@ export class Tab2Page {
 
   constructor(
     private dataService: DataWpService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    public translate : TranslateService
   ) {
     // récupérer la bdd
     this.storage = JSON.parse(localStorage.getItem('data') || '[]');

@@ -31,7 +31,7 @@ export class TabLandingPage implements OnInit {
     this.translate.use(lang);
     // sauvegarder dans localstorage
     localStorage.setItem('lang', lang);
-    
+
     this.router.navigate(['content', 'tabs', 'tab1']);
   }
 

@@ -1,4 +1,5 @@
 {
+  "title": "Olympic Games 2024",
   "accueil": "Home",
   "favoris": "Saved",
   "langue": "EN",
@@ -12,5 +13,7 @@
   "bienetre": "WELL-BEING",
   "hebergement": "ACCOMODATIONS",
   "magasin": "SHOPS",
-  "restaurant": "RESTAURANTS"
+  "restaurant": "RESTAURANTS",
+  "juillet": "July",
+  "aout": "August"
 }
