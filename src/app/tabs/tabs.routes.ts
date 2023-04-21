@@ -47,6 +47,11 @@ export const routes: Routes = [
           import('../tab-faq/tab-faq.page').then((m) => m.TabFaqPage),
       },
       {
+        path: 'tab-landing',
+        loadComponent: () =>
+          import('../tab-landing/tab-landing.page').then((m) => m.TabLandingPage),
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',

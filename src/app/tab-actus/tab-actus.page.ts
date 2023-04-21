@@ -11,19 +11,32 @@ import {
 import { Observable } from 'rxjs';
 import { NewsApiService } from 'src/services/news-api.service';
 import { RouterModule } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab-actus',
   templateUrl: './tab-actus.page.html',
   styleUrls: ['./tab-actus.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule],
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule, TranslateModule],
 })
 export class TabActusPage implements OnInit {
   public posts$: Observable<any> = this.newsApiService.collection;
   isModalOpen = false;
 
-  constructor(private newsService: NewsService, private newsApiService : NewsApiService) {}
+  constructor(private newsService: NewsService, private newsApiService : NewsApiService, public translate : TranslateService) {
+     if (localStorage.getItem('lang')) {
+       console.log(localStorage.getItem('lang'));
+       const lang = localStorage.getItem('lang');
+       if (lang == 'fr') {
+         console.log('en francais');
+         translate.use('fr');
+       } else {
+         console.log('en');
+         translate.use('en');
+       }
+     }
+  }
 
   ngOnInit() {}
 

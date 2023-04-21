@@ -1,6 +1,10 @@
 {
+  "accueil": "accueil",
+  "favoris": "Favoris",
+  "langue": "FR",
   "annuaire": "Annuaire",
   "titleTab1": "Ma Ville - JO 2024",
+  "titleTab2": "Actualités",
   "titleTabAnnuaire": "Annuaire",
   "agenda": "Agenda",
   "news": "A la Une",

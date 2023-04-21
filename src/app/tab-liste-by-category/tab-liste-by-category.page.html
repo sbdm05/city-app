@@ -1,6 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{ cat}}</ion-title>
+
+    <ion-title *ngIf="cat === 'HEBERGEMENT' ">{{ "hebergement" | translate}}</ion-title>
+    <ion-title *ngIf="cat === 'RESTAURANT' ">{{ "restaurant" | translate}}</ion-title>
+    <ion-title *ngIf="cat === 'MAGASIN' ">{{ "magasin" | translate}}</ion-title>
+    <ion-title *ngIf="cat === 'BIEN-ETRE' ">{{ "bienetre" | translate}}</ion-title>
+
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/content/tabs/tab-annuaire" color='light' text='Retour'></ion-back-button>
     </ion-buttons>

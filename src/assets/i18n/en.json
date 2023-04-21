@@ -1,6 +1,10 @@
 {
+  "accueil": "Home",
+  "favoris": "Saved",
+  "langue": "EN",
   "annuaire": "Directory",
   "titleTab1": "Olympic Games 2024",
+  "titleTab2": "News",
   "titleTabAnnuaire": "Directory",
   "agenda": "Schedule",
   "news": "News",

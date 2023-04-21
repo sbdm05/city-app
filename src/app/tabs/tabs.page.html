@@ -2,17 +2,26 @@
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="tab1">
       <ion-icon aria-hidden="true" name="home"></ion-icon>
-      <ion-label>Accueil</ion-label>
+      <ion-label>{{ "accueil" | translate}}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab2">
       <ion-icon aria-hidden="true" name="calendar"></ion-icon>
-      <ion-label>Agenda</ion-label>
+      <ion-label>{{ "agenda" | translate}}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab3">
       <ion-icon name="heart"></ion-icon>
-      <ion-label>Favoris</ion-label>
+      <ion-label>{{ "favoris" | translate}}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="tab-landing">
+      <ion-icon name="globe-outline"></ion-icon>
+      <ion-label>{{ "langue" | translate}}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
+<!--
+todo
+attention ici tab-landing redirige vers tab1. L'utilisateur repasse forcément par tab1
+à améliorer
+-->
