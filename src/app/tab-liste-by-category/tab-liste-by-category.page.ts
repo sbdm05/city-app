@@ -16,16 +16,19 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class TabListeByCategoryPage implements OnInit {
   public cat!: string;
   public datas = datasAnnuaire;
-  public filteredDatas !: any;
+  public filteredDatas!: any;
 
-  constructor(private activatedRoute: ActivatedRoute, public translate : TranslateService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    public translate: TranslateService
+  ) {
     if (this.activatedRoute.snapshot.paramMap.get('cat')) {
       this.cat =
         this.activatedRoute.snapshot.paramMap.get('cat')?.toUpperCase() ?? '';
     }
     console.log(this.cat);
 
-    this.filteredDatas = this.datas.filter((obj) => obj.cat === this.cat)?? [];
+    this.filteredDatas = this.datas.filter((obj) => obj.cat === this.cat) ?? [];
 
     if (localStorage.getItem('lang')) {
       console.log(localStorage.getItem('lang'));
@@ -41,4 +44,20 @@ export class TabListeByCategoryPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+
+    if (localStorage.getItem('lang')) {
+      console.log(localStorage.getItem('lang'));
+      const lang = localStorage.getItem('lang');
+      if (lang == 'fr') {
+        console.log('en francais');
+        this.translate.use('fr');
+      } else {
+        console.log('en');
+        this.translate.use('en');
+
+      }
+    }
+  }
 }
